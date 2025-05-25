@@ -20,9 +20,9 @@
 | Category        | Tool              |
 |----------------|-------------------|
 | SIEM            | Wazuh             |
-| Log Source      | Windows 11 VM     |
-| Log Agent       | Winlogbeat, Sysmon|
-| Platform        | VirtualBox        |
+| Log Source      | Windows 11 - On premise desktop   |
+| Log Agent       | Wazuh Agent, Sysmon|
+| Server + Attacker | Kali Linux - On premise Laptop |
 
 ---
 
