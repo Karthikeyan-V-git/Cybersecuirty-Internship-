@@ -1,10 +1,14 @@
 # Cybersecurity Internship Program
 ## 🏢 Provided by: Srida IT Consulting and Services Pvt Ltd
 
-## 📌 Welcome
+📌 Welcome
+This repository documents my journey through a multi-phase cybersecurity internship program designed to simulate real-world Security Operations Center (SOC) tasks.
 
+🚀 I'm excited to dive deeper into the world of cybersecurity — exploring how logs tell a story, how threats are detected in real-time, and how powerful tools like SIEMs empower defenders.
 
-This repository documents my journey through a multi-phase cybersecurity internship program designed to simulate real-world SOC (Security Operations Center) tasks.
+🔐 Through this hands-on experience, I aim to sharpen my skills in log analysis, detection engineering, and security monitoring, while building a solid foundation for a career in the field.
+
+I'm eager to learn, experiment, break, and secure — and this repo will track it all.
 
 ---
 
