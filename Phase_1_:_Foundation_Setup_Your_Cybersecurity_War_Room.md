@@ -70,21 +70,18 @@ sudo bash ./wazuh-install.sh -a
 - Configured with a recommended template
 
 📥 Download: [Sysmon](https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon)  
+Reference (Installation) :  https://youtu.be/uJ7pv6blyog?si=XGTqwj6FPkvigi6S
 📄 Template: [SwiftOnSecurity Sysmon Config](https://github.com/SwiftOnSecurity/sysmon-config)
 
 📸 Screenshot:  
-![Sysmon Running](./screenshots/sysmon_running.png)
+![Sysmon Running](./assets/sysmon.png)
 
----
-
-### ✔️ Installed Winlogbeat
-- Configured Winlogbeat to send logs to Wazuh
-- Edited `winlogbeat.yml` to enable Wazuh output
-
-📥 Download: [Winlogbeat](https://www.elastic.co/downloads/beats/winlogbeat)
-
-📸 Screenshot:  
-![Winlogbeat Logs](./screenshots/winlogbeat_logs.png)
+### ✔️ Installed Wazuh Agent on Windows 11 machine
+- No adavanced configuration required
+- Just follow the prompt
+🔗 [Official Documentation](https://documentation.wazuh.com/current/installation-guide/wazuh-agent/wazuh-agent-package-windows.html)
+![Agent Installation](./assets/agent_install.png)
+![Verify in Dashboard](./assets/agent.png)
 
 ---
 
