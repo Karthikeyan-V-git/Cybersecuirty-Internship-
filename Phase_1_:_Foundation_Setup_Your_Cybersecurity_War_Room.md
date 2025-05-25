@@ -20,22 +20,42 @@
 | Category        | Tool              |
 |----------------|-------------------|
 | SIEM            | Wazuh             |
-| Log Source      | Windows 11 - On premise desktop   |
+| Log Source      | Windows 11 (On-premise desktop)   |
 | Log Agent       | Wazuh Agent, Sysmon|
-| Server + Attacker | Kali Linux - On premise Laptop |
+| Wazuh Manager/Indexer/Dashboard + Attacker | Kali Linux (On-premise Laptop) |
 
 ---
 
-## 1️⃣ Lab Setup
+## 💻 1. Installing Windows 11 (Victim Machine)
 
-### ✅ Configured Virtual Environment:
-- **One Windows 11 VM** (Target/Victim)
-- **One non-virtual SIEM box** with **Wazuh** (deployed separately)
-
-📸 Screenshot:  
-![VM Setup](./screenshots/vm_setup.png)
+### Steps:
+1. Downloaded ISO from official Microsoft site:  
+   🔗 [Windows 11 ISO](https://www.microsoft.com/en-us/software-download/windows11)
+2. Created bootable USB using [Ventoy](https://www.ventoy.net/en/download.html)
+3. Installed Windows 11 on desktop hardware
+4. Performed initial updates and created a local admin account
 
 ---
+
+## 🧰 2. Installing Wazuh Components (Laptop)
+
+The following components were installed manually on the laptop:
+
+### 🖥️ Wazuh Stack Components:
+- **Wazuh indexer - 🔗[Step by step Installation](https://documentation.wazuh.com/current/installation-guide/wazuh-indexer/step-by-step.html)**
+- **Wazuh Server -  🔗[Step by step Installation](https://documentation.wazuh.com/current/installation-guide/wazuh-server/step-by-step.html)**
+- **Wazuh Dashboard - 🔗[Step by step Installation](https://documentation.wazuh.com/current/installation-guide/wazuh-dashboard/step-by-step.html)****
+
+### Installation Reference:
+- Official Wazuh all-in-one script:  
+```bash
+curl -sO https://packages.wazuh.com/4.7/wazuh-install.sh
+sudo bash ./wazuh-install.sh -a
+```
+  🔗 [Install Wazuh on Single-Host](https://documentation.wazuh.com/current/installation-guide/installing-wazuh-server/wazuh-single-node/index.html)
+🔗 [Official Documentation](https://documentation.wazuh.com/current/installation-guide/installing-wazuh-server/wazuh-single-node/index.html)
+
+
 
 ## 2️⃣ Log Agent Installation & Configuration
 
