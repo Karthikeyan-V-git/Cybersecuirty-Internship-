@@ -46,6 +46,13 @@ The following components were installed manually on the laptop:
 - **Wazuh Server -  🔗[Step by step Installation](https://documentation.wazuh.com/current/installation-guide/wazuh-server/step-by-step.html)**
 - **Wazuh Dashboard - 🔗[Step by step Installation](https://documentation.wazuh.com/current/installation-guide/wazuh-dashboard/step-by-step.html)****
 
+<p align="center">
+  <img src="/assets/Login.png" alt="Image 1" width="200"/>
+  <img src="/assets/dash_home.png" alt="Image 2" width="200"/>
+  <img src="/assets/dash_home1.png" alt="Image 2" width="200"/>
+</p>
+
+
 ### Installation Reference:
 - Official Wazuh all-in-one script:  
 ```bash
