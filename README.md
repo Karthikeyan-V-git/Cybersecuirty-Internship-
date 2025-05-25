@@ -28,6 +28,6 @@ I'm eager to learn, experiment, break, and secure — and this repo will track i
 
 This internship is divided into several phases. Each phase is documented with hands-on tasks, screenshots, references, and outcomes.
 
-- 🔹 [Phase 1: Foundation Setup — Your Cybersecurity War Room](./Phase 1: Foundation Setup — Your Cybersecurity War Room)
+- 🔹 [Phase 1: Foundation Setup — Your Cybersecurity War Room](./Phase 1: Foundation Setup — Your Cybersecurity War Room.md)
 
 Stay tuned as I document my learning and progress in the coming weeks!
