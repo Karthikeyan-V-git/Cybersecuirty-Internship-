@@ -1,6 +1,8 @@
 # Cybersecurity Internship Program
+## 🏢 Provided by: Srida IT Consulting and Services Pvt Ltd
 
 ## 📌 Welcome
+
 
 This repository documents my journey through a multi-phase cybersecurity internship program designed to simulate real-world SOC (Security Operations Center) tasks.
 
