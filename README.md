@@ -1,1 +1,1 @@
-# SIEM---Wazuh
+# SIEM - Wazuh
