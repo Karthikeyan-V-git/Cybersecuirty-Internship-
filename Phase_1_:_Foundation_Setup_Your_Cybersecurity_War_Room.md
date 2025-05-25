@@ -82,8 +82,8 @@ Reference (Installation) :  https://youtu.be/uJ7pv6blyog?si=XGTqwj6FPkvigi6S
 🔗 [Official Documentation](https://documentation.wazuh.com/current/installation-guide/wazuh-agent/wazuh-agent-package-windows.html)
 
 
-  <img src="/assets/agent_install.png" alt="Image 2" width="500"/>
-  <img src="/assets/agent.png" alt="Image 2" width="500"/>
+  <img src="/assets/agent_install.png" alt="Image 2" width="450"/>
+  <img src="/assets/agent.png" alt="Image 2" width="450"/>
 
 ---
 
