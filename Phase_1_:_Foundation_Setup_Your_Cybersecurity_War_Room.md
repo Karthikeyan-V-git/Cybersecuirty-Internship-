@@ -74,13 +74,15 @@ Reference (Installation) :  https://youtu.be/uJ7pv6blyog?si=XGTqwj6FPkvigi6S
 📄 Template: [SwiftOnSecurity Sysmon Config](https://github.com/SwiftOnSecurity/sysmon-config)
 
 📸 Screenshot:  
-  <img src="/assets/sysmon.png" alt="Image 2" width="600"/>
+  <img src="/assets/sysmon.png" alt="Image 2" width="500"/>
 
 ### ✔️ Installed Wazuh Agent on Windows 11 machine
 - No adavanced configuration required
 - Just follow the prompt
 🔗 [Official Documentation](https://documentation.wazuh.com/current/installation-guide/wazuh-agent/wazuh-agent-package-windows.html)
-  <img src="/assets/agent_install.png" alt="Image 2" width="600"/>
+
+---
+  <img src="/assets/agent_install.png" alt="Image 2" width="500"/>
   <img src="/assets/agent.png" alt="Image 2" width="500"/>
 
 ---
