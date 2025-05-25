@@ -47,9 +47,9 @@ The following components were installed manually on the laptop:
 - **Wazuh Dashboard - 🔗[Step by step Installation](https://documentation.wazuh.com/current/installation-guide/wazuh-dashboard/step-by-step.html)****
 
 <p align="center">
-  <img src="/assets/Login.png" alt="Image 1" width="300"/>
-  <img src="/assets/dash_home.png" alt="Image 2" width="300"/>
-  <img src="/assets/dash_home1.png" alt="Image 2" width="300"/>
+  <img src="/assets/Login.png" alt="Image 1" width="450"/>
+  <img src="/assets/dash_home.png" alt="Image 2" width="450"/>
+  <img src="/assets/dash_home1.png" alt="Image 2" width="450"/>
 </p>
 
 
