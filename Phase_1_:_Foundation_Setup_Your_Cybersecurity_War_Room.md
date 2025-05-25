@@ -1,5 +1,5 @@
 # 🛡️ Phase I: Foundation Setup — Your Cybersecurity War Room
-![](./Cybersecuirty-Internship-/assets/Phase_1.png)
+![](./assets/Phase_1.png)
 
 **Duration:** Day 1 — Day 7  
 **Objective:** Build a personal cybersecurity lab environment and configure basic monitoring and detection capabilities.
