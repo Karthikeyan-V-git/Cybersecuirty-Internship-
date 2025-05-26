@@ -97,9 +97,9 @@ Agent Installation
 - Checked Wazuh dashboard for incoming logs
 - Verified Sysmon logs for process creation, network events, and login attempts
 
-<img src="/assets/log_1.png" alt="Image 2" width="450"/>
-<img src="/assets/log_2.png" alt="Image 2" width="450"/>
-<img src="/assets/log_3.png" alt="Image 2" width="450"/>
+<img src="/assets/log_1.png" alt="Image 2" width="400"/>
+<img src="/assets/log_2.png" alt="Image 2" width="400"/>
+<img src="/assets/log_3.png" alt="Image 2" width="400"/>
 ---
 
 ## 4️⃣ Summary
