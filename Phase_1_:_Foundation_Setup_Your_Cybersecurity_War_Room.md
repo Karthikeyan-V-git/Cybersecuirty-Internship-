@@ -87,8 +87,8 @@ Agent Installation
 🔗 [Official Documentation](https://documentation.wazuh.com/current/installation-guide/wazuh-agent/wazuh-agent-package-windows.html)
 
 
-  <img src="/assets/agent_install.png" alt="Image 2" width="450"/>
-  <img src="/assets/agent.png" alt="Image 2" width="450"/>
+  <img src="/assets/agent_install.png" alt="Image 2" width="400"/>
+  <img src="/assets/agent.png" alt="Image 2" width="400"/>
 
 ---
 
@@ -97,9 +97,9 @@ Agent Installation
 - Checked Wazuh dashboard for incoming logs
 - Verified Sysmon logs for process creation, network events, and login attempts
 
-<img src="/assets/log_1.png" alt="Image 2" width="400"/>
-<img src="/assets/log_2.png" alt="Image 2" width="400"/>
-<img src="/assets/log_3.png" alt="Image 2" width="400"/>
+<img src="/assets/log_1.png" alt="Image 2" width="300"/>
+<img src="/assets/log_2.png" alt="Image 2" width="300"/>
+<img src="/assets/log_3.png" alt="Image 2" width="300"/>
 ---
 
 ## 4️⃣ Summary
