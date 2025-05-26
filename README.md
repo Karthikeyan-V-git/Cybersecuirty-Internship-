@@ -1,5 +1,5 @@
 # Cybersecurity Internship Program
-![](./assets/Home.png)
+![](./assets/home.png)
 ## 🏢 Provided by: Srida IT Consulting and Services Pvt Ltd
 
 📌 Welcome
