@@ -61,7 +61,7 @@ sudo bash ./wazuh-install.sh -a
   🔗 [Install Wazuh on Single-Host](https://documentation.wazuh.com/current/installation-guide/installing-wazuh-server/wazuh-single-node/index.html)
 🔗 [Official Documentation](https://documentation.wazuh.com/current/installation-guide/installing-wazuh-server/wazuh-single-node/index.html)
 
-
+---
 
 ## 3. Log Agent Installation & Configuration
 
@@ -90,6 +90,7 @@ Agent Installation
   <img src="/assets/agent_install.png" alt="Image 2" width="400"/>
   <img src="/assets/agent.png" alt="Image 2" width="400"/>
 </p>
+
 ---
 
 ## 4. Log Collection Verification
@@ -102,6 +103,7 @@ Agent Installation
 <img src="/assets/log_2.png" alt="Image 2" width="400"/>
 <img src="/assets/log_3.png" alt="Image 2" width="400"/>
 </p>
+
 ---
 
 ## 4️⃣ Summary
