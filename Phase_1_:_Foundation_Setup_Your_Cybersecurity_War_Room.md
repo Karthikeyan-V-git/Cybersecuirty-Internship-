@@ -98,7 +98,8 @@ Agent Installation
 - Verified Sysmon logs for process creation, network events, and login attempts
 
 <img src="/assets/log_1.png" alt="Image 2" width="450"/>
-
+<img src="/assets/log_2.png" alt="Image 2" width="450"/>
+<img src="/assets/log_3.png" alt="Image 2" width="450"/>
 ---
 
 ## 4️⃣ Summary
