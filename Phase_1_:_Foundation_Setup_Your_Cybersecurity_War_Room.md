@@ -63,7 +63,7 @@ sudo bash ./wazuh-install.sh -a
 
 
 
-## 2️⃣ Log Agent Installation & Configuration
+## 3. Log Agent Installation & Configuration
 
 ### ✔️ Installed Sysmon
 - Used `Sysinternals` from Microsoft
@@ -92,13 +92,12 @@ Agent Installation
 
 ---
 
-## 3️⃣ Log Collection Verification
+## 4. Log Collection Verification
 
 - Checked Wazuh dashboard for incoming logs
 - Verified Sysmon logs for process creation, network events, and login attempts
 
-📸 Screenshot:  
-![Wazuh Log View](./screenshots/wazuh_log_view.png)
+<img src="/assets/log_1.png" alt="Image 2" width="450"/>
 
 ---
 
