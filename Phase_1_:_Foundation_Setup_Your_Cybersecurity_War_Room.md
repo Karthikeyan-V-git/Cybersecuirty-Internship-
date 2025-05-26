@@ -79,6 +79,11 @@ Reference (Installation) :  https://youtu.be/uJ7pv6blyog?si=XGTqwj6FPkvigi6S
 ### ✔️ Installed Wazuh Agent on Windows 11 machine
 - No adavanced configuration required
 - Just follow the prompt
+
+Edit the existing Wazuh- Sysmon rules for proper detection 
+🔗 [GitHub](https://github.com/JACKnygma/wazuh_sysmon/blob/main/wazuh_sysmon_rule/custom_sysmon_rule.md)
+
+Agent Installation 
 🔗 [Official Documentation](https://documentation.wazuh.com/current/installation-guide/wazuh-agent/wazuh-agent-package-windows.html)
 
 
