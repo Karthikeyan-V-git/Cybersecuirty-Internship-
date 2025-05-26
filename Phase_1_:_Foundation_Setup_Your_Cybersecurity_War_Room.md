@@ -86,10 +86,10 @@ Edit the existing Wazuh- Sysmon rules for proper detection
 Agent Installation 
 🔗 [Official Documentation](https://documentation.wazuh.com/current/installation-guide/wazuh-agent/wazuh-agent-package-windows.html)
 
-
+<p align="center">
   <img src="/assets/agent_install.png" alt="Image 2" width="400"/>
   <img src="/assets/agent.png" alt="Image 2" width="400"/>
-
+</p>
 ---
 
 ## 4. Log Collection Verification
@@ -97,9 +97,11 @@ Agent Installation
 - Checked Wazuh dashboard for incoming logs
 - Verified Sysmon logs for process creation, network events, and login attempts
 
-<img src="/assets/log_1.png" alt="Image 2" width="300"/>
-<img src="/assets/log_2.png" alt="Image 2" width="300"/>
-<img src="/assets/log_3.png" alt="Image 2" width="300"/>
+<p align="center">
+<img src="/assets/log_1.png" alt="Image 2" width="400"/>
+<img src="/assets/log_2.png" alt="Image 2" width="400"/>
+<img src="/assets/log_3.png" alt="Image 2" width="400"/>
+</p>
 ---
 
 ## 4️⃣ Summary
