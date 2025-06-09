@@ -8,22 +8,25 @@ To detect potential brute force attacks that result in a successful login, which
 
 ## Tools Used
 - SIEM: Wazuh
-- Log Source: Windows Event Logs (via Winlogbeat + Sysmon)
+- Log Source: Windows Event Logs (Secuirty)
 - Lab Setup: 
-  - One Windows 11 desktop VM with Wazuh agent, Sysmon, and Winlogbeat installed.
+  - One Windows 11 desktop VM with Wazuh agent, Sysmon installed.
   - Wazuh server running on Kali Linux for centralized log collection and alerting.
   - Alerts configured via email and Telegram.
 
-## Event ID / Data Source Mapping
+## Event ID / Rule ID /Data Source Mapping
 | Source        | Event ID / Field | Description                      |
 |---------------|------------------|----------------------------------|
 | Windows Logs  | 4625             | Failed login attempt             |
 | Windows Logs  | 4624             | Successful login                 |
-| Sysmon        | N/A              | (Not used in this detection)     |
+| Wazuh Rule    | 60204            | Multiple Failed Login            |
+| Wazuh Rule    | 60106            | Sucessfull Login                 |
+| Custom Rule   | 100021           | Successful Login After Possible Brute Force |
 
-## Detection Logic / Query
+## Detection Logic / Rules
+
+1. Detect multiple failed login attempts.
 ```
-<!-- Rule 1: Detect multiple failed login attempts -->
 <rule id="60204" level="10" frequency="$MS_FREQ" timeframe="240">
   <if_matched_group>authentication_failed</if_matched_group>
   <same_field>win.eventdata.ipAddress</same_field>
@@ -34,8 +37,9 @@ To detect potential brute force attacks that result in a successful login, which
   </mitre>
 </rule>
 ```
+
+2. Detect successful login.
 ```
-<!-- Rule 2: Detect successful login -->
 <rule id="60106" level="3">
   <field name="win.system.eventID">^528$|^540$|^673$|^4624$|^4769$</field>
   <description>Windows Logon Success</description>
@@ -45,6 +49,8 @@ To detect potential brute force attacks that result in a successful login, which
   </mitre>
 </rule>
 ```
+
+3. Custom rule written for correlate both the above rule.
 ```
 <!-- Rule 3: Correlate both to indicate brute force success -->
 <group name="windows_brute_force">
@@ -55,3 +61,5 @@ To detect potential brute force attacks that result in a successful login, which
   </rule>
 </group>
 ```
+
+
