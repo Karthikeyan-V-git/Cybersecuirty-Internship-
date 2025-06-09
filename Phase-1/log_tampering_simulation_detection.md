@@ -121,7 +121,7 @@ These commands are run
 
 ![](./assets/Clean.png)    
     
-### Any `auditpol <command>'
+### `auditpol <command>'
   - Triggers Sysmon Rule 61603 leading to detection via rule `100026`
   - Works even if executed via PowerShell
   - As the condition is .originalFileName, It can identify all possible commands of auditpol
