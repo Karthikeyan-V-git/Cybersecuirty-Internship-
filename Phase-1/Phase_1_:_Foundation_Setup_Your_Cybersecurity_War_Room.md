@@ -1,7 +1,7 @@
 # 🛡️ Phase I: Foundation Setup — Your Cybersecurity War Room
 ![](./assets/Phase_1.png)
 
-**Duration:** Day 1 — Day 7  
+ 
 **Objective:** Build a personal cybersecurity lab environment and configure basic monitoring and detection capabilities.
 
 ---
@@ -70,8 +70,12 @@ sudo bash ./wazuh-install.sh -a
 - Configured with a recommended template
 
 📥 Download: [Sysmon](https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon)  
-Reference (Installation) :  https://youtu.be/uJ7pv6blyog?si=XGTqwj6FPkvigi6S
+
 📄 Template: [SwiftOnSecurity Sysmon Config](https://github.com/SwiftOnSecurity/sysmon-config)
+
+🔗 Reference : [Installation](https://youtu.be/uJ7pv6blyog?si=XGTqwj6FPkvigi6S)
+
+
 
 📸 Services - look for Sysmon64:  
   <img src="./Phase-1/assets/sysmon.png" alt="Image 2" width="400"/>
@@ -103,6 +107,17 @@ Agent Installation
 </p>
 
 ---
+
+
+## 5. Detection Scenerios
+
+1.  [Brute Force Followed By Privileged Login](./brute_force_successful_login_detection.md)
+2.  [Brute Force Followed By Privileged Login](./brute_force_successful_login_detection.md)
+3.  [Brute Force Followed By Privileged Login](./brute_force_successful_login_detection.md)
+4.  [Brute Force Followed By Privileged Login](./brute_force_successful_login_detection.md)
+5.  [Brute Force Followed By Privileged Login](./brute_force_successful_login_detection.md)
+
+
 
 ## 4️⃣ Summary
 
