@@ -5,7 +5,7 @@ This detection identifies a brute force login attempt where multiple failed logi
 
 ## Objective
 To detect potential brute force attacks that result in a successful login, which may indicate unauthorized access after credential guessing.
-
+---
 ## Tools Used
 - SIEM: Wazuh
 - Log Source: Windows Event Logs (Secuirty)
@@ -24,6 +24,7 @@ To detect potential brute force attacks that result in a successful login, which
 | Wazuh Rule    | 60204            | Multiple Failed Login            |
 | Wazuh Rule    | 60106            | Sucessfull Login                 |
 | Custom Rule   | 100021           | Successful Login After Possible Brute Force |
+---
 
 ## Detection Logic / Rules
 
@@ -65,6 +66,7 @@ To detect potential brute force attacks that result in a successful login, which
   </rule>
 </group>
 ```
+---
 
 
 ## Attack Triggering Scenario
@@ -108,16 +110,17 @@ This behavior is indicative of a credential stuffing or brute-force attack, foll
   "logonType": "2",
 }
 ```
+---
 
 ### Log - (Original) Sucessfull Login Which leads to the trigger of Next rule
 ![Final Log](./assets/brute_final_log.png)
 ![Final Log](./assets/brute_final_log1.png)
-
+---
 ### Evidence / Alerts
 ![Wazuh](./assets/brute_final_TH.png)
 ![Telegram](./assets/brute_final_telegram.png)
 
-
+---
 
 ### Analyst Notes / Recommendations
 1. What should an analyst do when this alert triggers?
