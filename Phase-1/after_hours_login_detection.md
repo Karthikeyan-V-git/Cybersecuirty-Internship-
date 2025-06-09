@@ -53,11 +53,21 @@ To detect potentially unauthorized or suspicious access by monitoring valid logi
 </rule>
 ```
 
-### Alternate Rule Option (May Produce Duplicates)
+### Alternate Rule Option (May Produce Duplicates) Using EventID - 4624
 ```xml
 <rule id="100024" level="12">
   <field name="win.system.eventID" type="pcre2">^4624$</field>
-  <if_group>authentication_success</if_group>
+  <time>6 pm - 8:30 am</time>
+  <description>
+    After-Hours Login Detected - User: $(win.eventdata.targetUserName) 
+    from IP: $(win.eventdata.ipAddress)
+  </description>
+</rule>
+```
+### Alternate Rule Option (May Produce Duplicates) Using group - authentication_sucess
+```xml
+<rule id="100024" level="12">
+  <if_group>authentication_sucess</if_group>
   <time>6 pm - 8:30 am</time>
   <description>
     After-Hours Login Detected - User: $(win.eventdata.targetUserName) 
@@ -66,6 +76,13 @@ To detect potentially unauthorized or suspicious access by monitoring valid logi
 </rule>
 ```
 
+```
+These alternatives may produce duplicates because Events 
+                                        - Windows Sucess Logon 
+                                        - Windows Workstation Logon
+                                        - Audit Sucesss
+Uses similar EventID - 4624 or similar group name - authentication_sucess.
+```
 ## Attack Triggering Scenario
 
 Trigger: A login is made after 6:00 PM using legitimate credentials (e.g., via RDP, console, etc.).
@@ -108,6 +125,8 @@ This may indicate:
 
 ### 🚨 Alerts 
 ![Wazuh - threat Hunting](./assets/Buisness_TH.png)
+
+
 ![Telegram](./assets/Buisness_telegram.png)
 
 
