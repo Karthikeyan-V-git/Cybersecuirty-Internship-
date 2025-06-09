@@ -25,9 +25,9 @@ This simulation involves detecting potential log tampering activities in a Windo
 
 
 ## Detection Rules
-
+---
 ### 1. Base Rule - Security Event Log (1102)
-
+---
 **_win.logFileCleared.subjectUserName_ added to the original rule to extract User.**
 ```xml
 <rule id="63103" level="10">
@@ -84,9 +84,9 @@ This simulation involves detecting potential log tampering activities in a Windo
 </rule>
 </group>
 ```
-
+---
 ## Trigger Scenarios
-
+---
 These commands are run
 
 ### `wevtutil cl <command>`
@@ -102,6 +102,8 @@ These commands are run
 ```
 
 **Log**
+
+
 ![](./assets/wevtutil.png)
 
 
@@ -116,6 +118,7 @@ These commands are run
     Clear-EventLog -Logname System
     ```
 **Log**
+
 ![](./assets/Clean.png.png)    
     
 ### Any `auditpol <command>'
@@ -128,12 +131,14 @@ These commands are run
     auditpol /clear
     ```
 **Log**
+
+
 ![](./assets/auditpol.png)
 ![](./assets/log_telegram.png)
 
-
+---
 ## 🔍 Analytical Notes & ✅ Recommendations
-
+---
 - Suspicious use of log-clearing commands may indicate attacker log tampering.
 - Event ID 1102 (log cleared) is a key indicator of suspicious behavior.
 - Sysmon Event ID 1 can reveal process creation related to tampering.
@@ -145,7 +150,7 @@ These commands are run
 - Investigate prior events if log tampering is detected.
 - Include such scenarios in regular blue team exercises.
 
-
+---
 ## Detection status
 ✅ Sucessfully Triggered and received the proper alerts.
-
+---
