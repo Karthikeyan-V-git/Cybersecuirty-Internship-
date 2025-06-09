@@ -118,7 +118,7 @@ Add the following configuration within the <ossec_config> block to the Wazuh age
 ---
 
 
-## 5. Detection Scenerios
+## 5. Detection Scenerios (Report)
 
 1.  [Brute Force Followed By Privileged Login](./brute_force_successful_login_detection.md)
 2.  [Brute Force Followed By Privileged Login](./brute_force_successful_login_detection.md)
