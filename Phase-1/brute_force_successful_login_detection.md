@@ -29,7 +29,7 @@ To detect potential brute force attacks that result in a successful login, which
 
 "$MS_FREQ" - Defined 8 (var name="MS_FREQ">8</var>)
 
-1. Detect multiple failed login attempts.
+### 1. Detect multiple failed login attempts.
 ```
 <rule id="60204" level="10" frequency="$MS_FREQ" timeframe="240">
   <if_matched_group>authentication_failed</if_matched_group>
@@ -42,7 +42,7 @@ To detect potential brute force attacks that result in a successful login, which
 </rule>
 ```
 
-2. Detect successful login.
+### 2. Detect successful login.
 ```
 <rule id="60106" level="3">
   <field name="win.system.eventID">^528$|^540$|^673$|^4624$|^4769$</field>
@@ -54,7 +54,7 @@ To detect potential brute force attacks that result in a successful login, which
 </rule>
 ```
 
-3. Custom rule written for correlate both the above rule.
+### 3. Custom rule written for correlate both the above rule.
 ```
 <!-- Rule 3: Correlate both to indicate brute force success -->
 <group name="windows_brute_force">
@@ -75,7 +75,7 @@ This behavior is indicative of a credential stuffing or brute-force attack, foll
 
 ---
 
-### Log - Single Failed Login Attempt (Simple version)
+### Log - Single Failed Login Attempt (Sample version)
 ```json
 {
   "eventID": "4625",
@@ -109,36 +109,12 @@ This behavior is indicative of a credential stuffing or brute-force attack, foll
 }
 ```
 
-### Log - Sucessfull Login Which leads to the trigger of Next rule
-```json
-{
-  "event_id": "4624",
-  "event_type": "Successful Login",
-  "logon_type": "2",
-  "user": {
-    "account_name": "Windows",
-    "domain_name": "VICTIM",
-    "security_id": "S-1-5-21-2652291832-2077583925-3500241936-1002"
-  },
-  "source": {
-    "ip_address": "127.0.0.1",
-    "workstation": "VICTIM"
-  },
-  },
-  "rule": {
-    "id": "100021",
-    "description": "Successful Login After Possible Brute Force",
-    "severity_level": 12
-  },
-  "timestamp": "2025-06-09T13:32:41.020+0530"
-}
-```
+### Log - (Original) Sucessfull Login Which leads to the trigger of Next rule
+![Final Log](./assets/brute_final_log.png)
+![Final Log](./assets/brute_final_log1.png)
 
 ### Evidence / Alerts
-
 ![Wazuh](./assets/brute_final_TH.png)
-![Email](./assets/brute_final_email1.png)
-![Email](./assets/brute_final_email2.png)
 ![Telegram](./assets/brute_final_telegram.png)
 
 
