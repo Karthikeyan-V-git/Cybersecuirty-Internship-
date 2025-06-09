@@ -134,7 +134,11 @@ These commands are run
 
 
 ![](./assets/auditpol.png)
-![](./assets/log_telegram.png)
+
+
+<p align="center">
+  <img src="./assets/log_telegram.png" alt="Image 1" width="500"/>
+</p>
 
 ---
 ## 🔍 Analytical Notes & ✅ Recommendations
