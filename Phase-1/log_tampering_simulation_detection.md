@@ -119,7 +119,7 @@ These commands are run
     ```
 **Log**
 
-![](./assets/Clean.png.png)    
+![](./assets/Clean.png)    
     
 ### Any `auditpol <command>'
   - Triggers Sysmon Rule 61603 leading to detection via rule `100026`
