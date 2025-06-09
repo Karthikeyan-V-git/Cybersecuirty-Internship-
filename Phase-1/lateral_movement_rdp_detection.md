@@ -89,7 +89,7 @@ To detect lateral movement attempts using RDP, especially when the initial acces
    - Remmina GUI with found credentials.
 
 <p align="center">
-  <img src="./assets/RDP_login.png.png" alt="Image 2" width="500"/>
+  <img src="./assets/RDP_login.png" alt="Image 2" width="500"/>
   <img src="./assets/RDP_GUI.png" alt="Image 2" width="500"/>
 </p>
 
@@ -131,7 +131,8 @@ To detect lateral movement attempts using RDP, especially when the initial acces
 ```
 
 ### Original Final Log
-![](./assets/RDP_final_log.png)
+![](./assets/RDP_final_log1.png)
+![](./assets/RDP_final_log2.png)
 ![](./assets/RDP_telegram.png)
 
 ## Analyst Notes / Recommendations
