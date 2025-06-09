@@ -100,8 +100,6 @@ Agent Installation
 
 <p align="center">
 <img src="/assets/log_1.png" alt="Image 2" width="400"/>
-<img src="/assets/log_2.png" alt="Image 2" width="400"/>
-<img src="/assets/log_3.png" alt="Image 2" width="400"/>
 </p>
 
 ---
