@@ -26,6 +26,8 @@ To detect potential brute force attacks that result in a successful login, which
 | Custom Rule   | 100021           | Successful Login After Possible Brute Force |
 ---
 
+
+---
 ## Detection Logic / Rules
 
 "$MS_FREQ" - Defined 8 (var name="MS_FREQ">8</var>)
@@ -68,15 +70,15 @@ To detect potential brute force attacks that result in a successful login, which
 ```
 ---
 
-
+---
 ## Attack Triggering Scenario
 
 Triggered by attempting 8 consecutive failed login attempts within a short time window, followed by a single successful login attempt from the same IP address.
 
 This behavior is indicative of a credential stuffing or brute-force attack, followed by unauthorized access using valid credentials.
-
 ---
 
+---
 ### Log - Single Failed Login Attempt (Sample version)
 ```json
 {
@@ -112,6 +114,7 @@ This behavior is indicative of a credential stuffing or brute-force attack, foll
 ```
 ---
 
+---
 ### Log - (Original) Sucessfull Login Which leads to the trigger of Next rule
 ![Final Log](./assets/brute_final_log.png)
 ![Final Log](./assets/brute_final_log1.png)
@@ -122,6 +125,7 @@ This behavior is indicative of a credential stuffing or brute-force attack, foll
 
 ---
 
+---
 ### Analyst Notes / Recommendations
 1. What should an analyst do when this alert triggers?
    - Investigate the user account involved.
@@ -132,7 +136,8 @@ This behavior is indicative of a credential stuffing or brute-force attack, foll
 2. Possible false positives?
    - Users who forget passwords and retry multiple times before succeeding.
    - Automated software or scripts triggering multiple failed attempts.
-
+---
+---
 ### Detection Status
 ✅ Alerts successfully tested and received via both Email and Telegram.
 
