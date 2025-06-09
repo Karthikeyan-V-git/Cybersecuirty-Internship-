@@ -124,7 +124,7 @@ Add the following configuration within the <ossec_config> block to the Wazuh age
 2.  [After Hours Login](./after_hours_login_detection.md)
 3.  [Lateral Movement via RDP](./lateral_movement_rdp_detection.md)
 4.  [Brute Force Followed By Privileged Login](./brute_force_successful_login_detection.md)
-5.  [Brute Force Followed By Privileged Login](./brute_force_successful_login_detection.md)
+5.  [Log tampering Simulation](./log_tampering_simulation_detection.md)
 
 
 
