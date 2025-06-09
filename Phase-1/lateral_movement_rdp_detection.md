@@ -1,5 +1,5 @@
 # Detection Use Case: Lateral Movement via RDP After Brute Force
-![](./assets/lateral_rdp.jpg)
+![](./assets/rdp.png)
 
 ## Scenario Description
 This detection identifies a brute force attack on RDP using Hydra, followed by a successful login through Remmina, potentially indicating lateral movement. The attacker uses Kali Linux to target a Windows 11 machine via RDP.
@@ -13,7 +13,7 @@ To detect lateral movement attempts using RDP, especially when the initial acces
 - **Attack Tool**: Hydra (Brute Force), Remmina (RDP Client)
 - **Environment**:
   - Kali Linux (Attacker Machine)
-  - Windows 11 VM with Wazuh Agent and Sysmon
+  - Windows 11 VM with Wazuh Agent and Sysmon - RDP configured
   - Wazuh server for centralized alerting
 
 ## Event ID / Rule ID / Data Source Mapping
@@ -23,7 +23,8 @@ To detect lateral movement attempts using RDP, especially when the initial acces
 | Windows Logs  | 4625                   | Failed login attempt                      |
 | Windows Logs  | 4624 + LogonType 10    | Successful RDP login                      |
 | Wazuh Rule    | 60204                  | Multiple Failed Logins (Brute Force)      |
-| Wazuh Rule    | 92657                  | Successful RDP Login (LogonType 10)       |
+| Wazuh Rule    | 92657                  | Successful RDP Login                      |
+| Logon Type    | 10                     | RDP login
 | Custom Rule   | 100022, 100023         | Correlation between brute force and success |
 
 ## Detection Logic / Rules
@@ -81,11 +82,17 @@ To detect lateral movement attempts using RDP, especially when the initial acces
 ## Attack Triggering Scenario
 1. Launch brute force using:
    ```bash
-   hydra -t 4 -V -f -l administrator -P /usr/share/wordlists/rockyou.txt rdp://192.168.x.x
+   hydra -t 4 -V -f -L username.txt -P /usr/share/wordlists/rockyou.txt rdp://192.168.x.x
    ```
 
 2. After a few failed attempts, gain access using:
    - Remmina GUI with found credentials.
+
+<p align="center">
+  <img src="./assets/RDP_login.png.png" alt="Image 2" width="500"/>
+  <img src="./assets/RDP_GUI.png" alt="Image 2" width="500"/>
+</p>
+
 
 ## Sample Log Snippets
 
@@ -123,6 +130,10 @@ To detect lateral movement attempts using RDP, especially when the initial acces
 }
 ```
 
+### Original Final Log
+![](./assets/RDP_final_log.png)
+![](./assets/RDP_telegram.png)
+
 ## Analyst Notes / Recommendations
 
 1. Check whether RDP was intended or expected for that host.
@@ -131,4 +142,4 @@ To detect lateral movement attempts using RDP, especially when the initial acces
 4. Search for related suspicious activities (e.g., process injection, privilege escalation).
 
 ## Detection Status
-✅ Detection rules successfully tested for Hydra + Remmina scenario.
+✅ Sucessfully Triggered and received alerts.
