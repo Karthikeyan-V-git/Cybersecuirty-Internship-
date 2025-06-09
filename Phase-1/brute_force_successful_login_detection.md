@@ -11,8 +11,10 @@ To detect potential brute force attacks that result in a successful login, which
 - Log Source: Windows Event Logs (Secuirty)
 - Lab Setup: 
   - One Windows 11 desktop VM with Wazuh agent, Sysmon installed.
+  - Default secuirty measures are turned of for testing.
   - Wazuh server running on Kali Linux for centralized log collection and alerting.
   - Alerts configured via email and Telegram.
+  
 
 ## Event ID / Rule ID /Data Source Mapping
 | Source        | Event ID / Field | Description                      |
@@ -138,6 +140,24 @@ This behavior is indicative of a credential stuffing or brute-force attack, foll
 ![Email](./assets/brute_final_email1.png)
 ![Email](./assets/brute_final_email2.png)
 ![Telegram](./assets/brute_final_telegram.png)
+
+
+
+### Analyst Notes / Recommendations
+1. What should an analyst do when this alert triggers?
+   - Investigate the user account involved.
+   - Check for lateral movement or privilege escalation.
+   - Validate if the login was legitimate (e.g., check with the user or correlate with VPN or remote access logs).
+   - Block the IP address or user if unauthorized.
+
+2. Possible false positives?
+   - Users who forget passwords and retry multiple times before succeeding.
+   - Automated software or scripts triggering multiple failed attempts.
+
+### Detection Status
+✅ Alerts successfully tested and received via both Email and Telegram.
+
+
 
 
 
