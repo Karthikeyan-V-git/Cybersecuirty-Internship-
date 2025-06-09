@@ -137,7 +137,7 @@ This behavior is indicative of a credential stuffing or brute-force attack, foll
 ---
 
 ### Detection Status
-✅ Alerts successfully tested and received via both Email and Telegram.
+✅ Alerts successfully tested and received via Telegram.
 
 
 
