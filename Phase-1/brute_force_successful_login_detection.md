@@ -1,5 +1,5 @@
 # Detection Use Case: Brute Force Followed by Successful Login
-![](./assets/brute.png)
+![](./assets/brute.jpg)
 ## Scenario Description
 This detection identifies a brute force login attempt where multiple failed login events (Event ID 4625) are followed by a successful login (Event ID 4624) from the same IP address. In this scenario, 8 failed login attempts occurred on a desktop machine, followed by one successful login.
 
