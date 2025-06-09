@@ -25,7 +25,7 @@ To detect potential brute force attacks that result in a successful login, which
 
 ## Detection Logic / Rules
 
-"$MS_FREQ" - Defined 8 (<var name="MS_FREQ">8</var>)
+"$MS_FREQ" - Defined 8 (var name="MS_FREQ">8</var>)
 
 1. Detect multiple failed login attempts.
 ```
