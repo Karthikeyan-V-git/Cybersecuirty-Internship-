@@ -47,8 +47,8 @@ The following components were installed manually on the laptop:
 - **Wazuh Dashboard - 🔗[Step by step Installation](https://documentation.wazuh.com/current/installation-guide/wazuh-dashboard/step-by-step.html)****
 
 <p align="center">
-  <img src="./Phase-1/assets/Login.png" alt="Image 1" width="500"/>
-  <img src="./Phase-1/assets/dash_home.png" alt="Image 2" width="500"/>
+  <img src="./assets/Login.png" alt="Image 1" width="500"/>
+  <img src="./assets/dash_home.png" alt="Image 2" width="500"/>
 </p>
 
 
@@ -78,7 +78,7 @@ sudo bash ./wazuh-install.sh -a
 
 
 📸 Services - look for Sysmon64:  
-  <img src="./Phase-1/assets/sysmon.png" alt="Image 2" width="400"/>
+  <img src="./assets/sysmon.png" alt="Image 2" width="400"/>
 
 ### ✔️ Installed Wazuh Agent on Windows 11 machine
 - No adavanced configuration required
@@ -91,8 +91,8 @@ Agent Installation
 🔗 [Official Documentation](https://documentation.wazuh.com/current/installation-guide/wazuh-agent/wazuh-agent-package-windows.html)
 
 <p align="center">
-  <img src="./Phase-1/assets/agent_install.png" alt="Image 2" width="400"/>
-  <img src="./Phase-1/assets/agent.png" alt="Image 2" width="400"/>
+  <img src="./assets/agent_install.png" alt="Image 2" width="400"/>
+  <img src="./assets/agent.png" alt="Image 2" width="400"/>
 </p>
 
 ---
@@ -103,7 +103,7 @@ Agent Installation
 - Verified Sysmon logs for process creation, network events, and login attempts
 
 <p align="center">
-<img src="./Phase-1/assets/log_1.png" alt="Image 2" width="400"/>
+<img src="./assets/log_1.png" alt="Image 2" width="400"/>
 </p>
 
 ---
