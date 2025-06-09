@@ -90,6 +90,15 @@ Edit the existing Wazuh- Sysmon rules for proper detection
 Agent Installation 
 🔗 [Official Documentation](https://documentation.wazuh.com/current/installation-guide/wazuh-agent/wazuh-agent-package-windows.html)
 
+
+Add the following configuration within the <ossec_config> block to the Wazuh agent C:\Program Files (x86)\ossec-agent\ossec.conf file to specify the location to collect Sysmon logs:
+```
+<localfile>
+  <location>Microsoft-Windows-Sysmon/Operational</location>
+  <log_format>eventchannel</log_format>
+</localfile>
+```
+
 <p align="center">
   <img src="./assets/agent_install.png" alt="Image 2" width="400"/>
   <img src="./assets/agent.png" alt="Image 2" width="400"/>
