@@ -25,6 +25,8 @@ To detect potential brute force attacks that result in a successful login, which
 
 ## Detection Logic / Rules
 
+"$MS_FREQ" - Defined 8 (<var name="MS_FREQ">8</var>)
+
 1. Detect multiple failed login attempts.
 ```
 <rule id="60204" level="10" frequency="$MS_FREQ" timeframe="240">
@@ -61,5 +63,39 @@ To detect potential brute force attacks that result in a successful login, which
   </rule>
 </group>
 ```
+
+
+## Attack Triggering Scenario
+
+Triggered by attempting 8 consecutive failed login attempts within a short time window, followed by a single successful login attempt from the same IP address.
+
+This behavior is indicative of a credential stuffing or brute-force attack, followed by unauthorized access using valid credentials.
+
+---
+
+### Log - Single Failed Login Attempt (Simple version)
+```json
+{
+  "eventID": "4625",
+  "description": "Logon Failure - Unknown user or bad password",
+  "agent": {
+    "name": "victim",
+    "ip": "192.168.29.100"
+  },
+  "eventTime": "2025-06-09T08:01:00Z",
+  "username": "Windows",
+  "workstationName": "VICTIM",
+  "ipAddress": "127.0.0.1",
+  "logonType": "2",
+  "status": "0xC000006D",
+  "subStatus": "0xC000006A",
+  "process": {
+    "name": "C:\\Windows\\System32\\svchost.exe",
+    "id": "0x5ec"
+  },
+  "authenticationPackage": "Negotiate",
+  "logonProcess": "User32",
+  "source": "windows_eventchannel"
+}
 
 
