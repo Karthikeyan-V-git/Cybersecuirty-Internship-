@@ -1,5 +1,5 @@
 # Detection Use Case: Successful Login After Business Hours
-![](./assets/after_hours_login.jpg)
+![](./assets/Buisness.png)
 
 ## Scenario Description
 This detection identifies successful login attempts occurring outside standard business hours. In this setup, a login attempt made after 6:00 PM using valid credentials may indicate suspicious activity, especially if it’s unusual for the user or organization.
@@ -38,7 +38,7 @@ To detect potentially unauthorized or suspicious access by monitoring valid logi
 </rule>
 ```
 
-### Rule 2: Detect Successful Login After Business Hours
+### Rule 2: Custom Rule-  Detect Successful Login After Business Hours
 ```xml
 <rule id="100024" level="12">
   <if_sid>60106</if_sid>
@@ -103,6 +103,14 @@ This may indicate:
 }
 ```
 
+### ✅ Original FInal Log
+![](./assets/Buisness_final_log.png)
+
+### 🚨 Alerts 
+![Wazuh - threat Hunting](./assets/Buisness_TH.png)
+![Telegram](./assets/Buisness_telegram.png)
+
+
 ## Analyst Notes / Recommendations
 
 1. Validate whether after-hours login is routine for the specific user.
@@ -111,4 +119,4 @@ This may indicate:
 4. Track any lateral movement or privilege escalation activities post-login.
 
 ## Detection Status
-✅ Successfully triggered using simulated after-hours login attempts.
+✅ Successfully triggered using simulated after-hours login attempts and received alerts.
