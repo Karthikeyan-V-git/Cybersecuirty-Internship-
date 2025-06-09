@@ -53,7 +53,7 @@ To detect lateral movement attempts using RDP, especially when the initial acces
 </rule>
 ```
 
-### Rule 3: Correlate Success with Brute Force (Same IP)
+### Rule 3: Custom rule - Correlate Success with Brute Force (Same IP)
 ```xml
 <rule id="100022" level="12">
   <!-- LogonType 10 = RemoteInteractive (RDP) -->
@@ -67,7 +67,7 @@ To detect lateral movement attempts using RDP, especially when the initial acces
 </rule>
 ```
 
-### Rule 4: Alternate Correlation Using SID
+### Rule 4: Custom rule - Alternate Correlation Using SID
 ```xml
 <rule id="100023" level="12">
   <if_sid>92657</if_sid>
