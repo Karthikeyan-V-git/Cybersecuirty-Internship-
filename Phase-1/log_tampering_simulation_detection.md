@@ -1,19 +1,34 @@
 # Log Tampering Simulation Detection
-
+![](./assets/logtampering.png)
 ## Scenario
 
 This simulation involves detecting potential log tampering activities in a Windows environment. The attacker attempts to clear logs using tools like `wevtutil`, `auditpol`, and PowerShell cmdlets such as `Clear-EventLog`.
 
-## Tools/Commands Used
 
-- `auditpol`
-- `wevtutil`
-- `Clear-EventLog` (PowerShell)
+## Tools Used
+- **SIEM**: Wazuh  
+- **Log Source**: Windows Security Logs , Sysmon logs
+- **Environment**:
+  - Windows 11 with Wazuh agent and Sysmon installed.
+  - Centralized Wazuh Manager for alert correlation and forwarding.
+  - Tools - wevtutil, Clear-EventLog, auditpol
+
+
+## Event ID / Rule ID / Data Source Mapping
+
+| Source        | Event ID / Field              | Description                        |
+|---------------|-------------------------------|------------------------------------|
+| Sysmon        | 1                             | Process creation                   |
+| Windows/Security| 1102                        | Audit log cleared                  |
+| Custom Rule 1 | 100025                        | Log cleared using wevtutil         |
+| Custom Rule 2 | 100026                        | Any possible usage of command auditpol|
+
 
 ## Detection Rules
 
-### 1. Base Rule - Security Event Log
+### 1. Base Rule - Security Event Log (1102)
 
+**_win.logFileCleared.subjectUserName_ added to the original rule to extract User.**
 ```xml
 <rule id="63103" level="10">
     <if_sid>63108</if_sid>
@@ -29,7 +44,7 @@ This simulation involves detecting potential log tampering activities in a Windo
 </rule>
 ```
 
-### 2. Base Rule 2 - Sysmon Log
+### 2. Base Rule 2 - Sysmon Event ID - 1 - Process Creation
 
 ```xml
 <rule id="61603" level="5">
@@ -41,6 +56,8 @@ This simulation involves detecting potential log tampering activities in a Windo
 ```
 
 ### 3. Custom Rules - Group: `log_tamper`
+
+**To identify usage of _wevtutil/auditpol_**
 
 ```xml
 <group name="log_tamper">
@@ -70,14 +87,65 @@ This simulation involves detecting potential log tampering activities in a Windo
 
 ## Trigger Scenarios
 
-- `wevtutil cl Security`
+These commands are run
+
+### `wevtutil cl <command>`
   - Triggers Base Rule 1 (Event ID 1102)
   - Triggers Sysmon Rule 61603 leading to detection via rule `100025`
   - Works even if executed via PowerShell
+  - As the condition is .originalFileName, It can identify all possible commands of wevtutil
 
-- `Clear-EventLog -Logname Security`
-  - Triggers Base Rule 1
+```
+    wevtutil cl Security
+    wevtutil cl System
+    wevtutil cl Application
+```
 
-- Any `auditpol` command
+**Log**
+![](./assets/wevtutil.png)
+
+
+### `Clear-EventLog -Logname <command>`
+
+  - Triggers Base Rule 1 - 
+  - Used in powershell only
+  - As the condition is based on 1102, It can identify all possible -Logname
+    ```
+    Clear-EventLog -Logname Security
+    Clear-EventLog -Logname Application
+    Clear-EventLog -Logname System
+    ```
+**Log**
+![](./assets/Clean.png.png)    
+    
+### Any `auditpol <command>'
   - Triggers Sysmon Rule 61603 leading to detection via rule `100026`
   - Works even if executed via PowerShell
+  - As the condition is .originalFileName, It can identify all possible commands of auditpol
+    ```
+    auditpol #Even this will be alerted
+    auditpol /set /subcategory:"Logon" /success:enable /failure:enable
+    auditpol /clear
+    ```
+**Log**
+![](./assets/auditpol.png)
+![](./assets/log_telegram.png)
+
+
+## 🔍 Analytical Notes & ✅ Recommendations
+
+- Suspicious use of log-clearing commands may indicate attacker log tampering.
+- Event ID 1102 (log cleared) is a key indicator of suspicious behavior.
+- Sysmon Event ID 1 can reveal process creation related to tampering.
+- Combine Security and Sysmon logs for higher detection accuracy.
+- Flag log tampering attempts as high severity for immediate response.
+- Forward logs to a central SIEM to prevent local deletion.
+- Restrict tools like `wevtutil` and `auditpol` using AppLocker/WDAC.
+- Monitor and control PowerShell usage with execution policies.
+- Investigate prior events if log tampering is detected.
+- Include such scenarios in regular blue team exercises.
+
+
+## Detection status
+✅ Sucessfully Triggered and received the proper alerts.
+
