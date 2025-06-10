@@ -1,5 +1,7 @@
 # Detection Use Case: New User Account Creation Followed by Privilege Escalation
-![](./assets/user.png)
+<p align="center">
+  <img src="./assets/user.png" alt="Image 1" width="800"/>
+</p>
 
 ## Scenario Description
 This detection identifies a suspicious behavior pattern where a new user account is created (Event ID 4720), followed by the addition of the user to the local Administrators group (Event ID 4732). This activity, especially if it occurs after business hours, may indicate unauthorized privilege escalation.
