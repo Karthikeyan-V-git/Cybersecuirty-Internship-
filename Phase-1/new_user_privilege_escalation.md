@@ -11,16 +11,14 @@ To detect potentially malicious user creation and privilege escalation, particul
 
 ## Tools Used
 - **Command Line Utility**: `net` command
-  - `net user <username> <password> /add` – Create a new user.
-  - `net localgroup administrators <username> /add` – Add user to Administrators group.
-  - `net user <username> /delete` – Cleanup/removal.
+
 - **SIEM**: Wazuh
 - **Log Source**: Windows Event Logs (Security)
 - **Lab Setup**:
   - One Windows 11 VM with Wazuh agent and Sysmon installed.
   - Wazuh server on Kali Linux for centralized log analysis.
   - Default security restrictions relaxed for test purposes.
-  - Alerts configured for email and Telegram delivery.
+  - Alerts configured for Telegram delivery.
 
 ---
 
@@ -29,7 +27,7 @@ To detect potentially malicious user creation and privilege escalation, particul
 |---------------|------------------|------------------------------------------|
 | Windows Logs  | 4720             | New user account created                 |
 | Windows Logs  | 4732             | User added to local group (Administrators) |
-| Wazuh Rule    | 60210            | New User Creation Detected               |
+| Wazuh Rule    | 60109            | New User Creation Detected               |
 | Wazuh Rule    | 60211            | Privilege Escalation Detected            |
 | Custom Rule   | 100030           | New Admin User Created After Hours       |
 
@@ -37,85 +35,74 @@ To detect potentially malicious user creation and privilege escalation, particul
 
 ## Detection Logic / Rules
 
-### 1. Detect new user account creation.
-```xml
-<rule id="60210" level="7">
-  <field name="win.system.eventID">4720</field>
-  <description>New User Account Created</description>
-  <options>no_full_log</options>
-  <mitre>
-    <id>T1136</id>
-  </mitre>
-</rule>
-```
+### 1. Detect new user account creation - Event ID - 4720
+**_<description>New account '$(win.eventdata.targetUserName)' created (SID: $(win.eventdata.targetSid)). Tracking for privilege escalation...</description>_**
+**Customized version which send alerts with more data for better understanding through alert itself**
 
-### 2. Detect privilege escalation (user added to local Administrators group).
 ```xml
-<rule id="60211" level="10">
-  <field name="win.system.eventID">4732</field>
-  <description>User Added to Administrators Group</description>
-  <options>no_full_log</options>
-  <mitre>
-    <id>T1068</id>
-  </mitre>
-</rule>
-```
-
-### 3. Custom rule to detect both events and evaluate time.
-```xml
-<!-- Rule 3: Correlate user creation and escalation after business hours -->
-<group name="windows_privilege_escalation">
-  <rule id="100030" level="13">
-    <if_sid>60211</if_sid>
-    <if_matched_sid>60210</if_matched_sid>
-    <timeframe>360</timeframe>
-    <description>Privilege Escalation Detected After New User Creation (Possible After Hours)</description>
+<rule id="60109" level="10">
+    <if_sid>60103</if_sid>
+    <field name="win.system.eventID">^624$|^626$|^4720$</field>
+    <description>New account '$(win.eventdata.targetUserName)' created (SID: $(win.eventdata.targetSid)). Tracking for privilege escalation...</description>
+    <options>no_full_log</options>
+    <group>adduser,account_changed,</group>
+    <group>pci_dss_8.1.2,pci_dss_10.2.5,gpg13_7.10,gdpr_IV_35.7.d,gdpr_IV_32.2,hipaa_164.312.a.2.I,hipaa_164.312.a.2.II,hipaa_164.312.b,nist_800_53_AC.2,nist_800_53_IA.4,nist_800_53_AU.14,nist_800_53_AC.7,tsc_CC6.8,tsc_CC7.2,tsc_CC7.3,</group>
+    <mitre>
+      <id>T1098</id>
+    </mitre>
   </rule>
-</group>
+```
+
+### 2. Detect privilege escalation (user added to local Administrators group) Event ID - 4732.
+
+**'$(win.eventdata.memberSid)'**
+**Customized version which send alerts with more data for better understanding through alert itself**
+
+```xml
+<rule id="100103" level="10" timeframe="60">
+    <if_matched_sid>60109</if_matched_sid>
+    <if_sid>60154</if_sid> <!-- Rule to identify group changes (Already exist) -->
+    <description>New Account given privilage immediately after creation,
+    ID : '$(win.eventdata.memberSid)'.</description>
+</rule>
+```
+
+### 3. Custom rule to detect account creation after buisness hours.
+
+```xml
+<rule id="100032" level="12">
+  <if_sid>60109</if_sid>
+  <time>6 pm - 8:30 am</time>
+  <description>New account '$(win.eventdata.targetUserName)' created (SID: $(win.eventdata.targetSid)). After Buisness Hours</description>
+</rule>
 ```
 
 ---
 
-## Attack Triggering Scenario
-Triggered when an attacker creates a new user account and escalates its privileges using the `net` command, particularly during off-hours to evade detection.
+## Attack Triggered using below commands
 
----
+### `net user <username> <password> /add` – Create a new user.
 
-### Log - New User Creation (Sample)
-```json
-{
-  "eventID": "4720",
-  "description": "A user account was created.",
-  "userAccount": "testuser",
-  "agent": {
-    "name": "workstation",
-    "ip": "192.168.1.5"
-  },
-  "eventTime": "2025-06-09T22:45:00Z",
-  "creator": "Administrator"
-}
-```
+**Log** 
 
-### Log - Privilege Escalation (Sample)
-```json
-{
-  "eventID": "4732",
-  "description": "A member was added to a security-enabled local group.",
-  "group": "Administrators",
-  "member": "testuser",
-  "agent": {
-    "name": "workstation",
-    "ip": "192.168.1.5"
-  },
-  "eventTime": "2025-06-09T22:46:30Z"
-}
-```
+![](./assets/user_add_log.png)
 
----
+   
+### `net localgroup administrators <username> /add` – Add user to Administrators groups.
+
+**Log**
+
+![](./assets/privilage_given.pmg)
+    
+
 
 ### Evidence / Alerts
-![Wazuh](./assets/escalation_alert.png)
-![Telegram](./assets/escalation_telegram.png)
+
+<p align="center">
+  <img src="./assets/user_telegram.png" alt="Image 1" width="500"/>
+  <img src="./assets/priv_telegram.png" alt="Image 1" width="500"/>
+</p>
+
 
 ---
 
@@ -133,4 +120,4 @@ Triggered when an attacker creates a new user account and escalates its privileg
 ---
 
 ### Detection Status
-✅ Detection tested successfully with alerts triggered and received via Telegram and Wazuh dashboard.
+✅ Detection tested successfully with alerts triggered and received via Telegram and Wazuh.
