@@ -28,8 +28,8 @@ To detect potentially malicious user creation and privilege escalation, particul
 | Windows Logs  | 4720             | New user account created                 |
 | Windows Logs  | 4732             | User added to local group (Administrators) |
 | Wazuh Rule    | 60109            | New User Creation Detected               |
-| Wazuh Rule    | 60211            | Privilege Escalation Detected            |
-| Custom Rule   | 100030           | New Admin User Created After Hours       |
+| Custom Rule    | 100103            | Privilege Escalation Detected (immediate)         |
+| Custom Rule   | 100032           | New User Created After Hours       |
 
 ---
 
@@ -83,24 +83,29 @@ To detect potentially malicious user creation and privilege escalation, particul
 
 ### `net user <username> <password> /add` – Create a new user.
 
-**Log** 
+**Log - Alert** 
 
-![](./assets/user_add_log.png)
+<p align="center">
+  <img src="./assets/acc_creation_1.png" alt="Image 1" width="500"/>
+  <img src="./assets/acc_creation_2.png" alt="Image 2" width="500"/>
+</p>
 
    
 ### `net localgroup administrators <username> /add` – Add user to Administrators groups.
 
-**Log**
+**Log - Alert**
 
-![](./assets/privilage_given.pmg)
+<p align="center">
+  <img src="./assets/prev_1.png" alt="Image 1" width="500"/>
+  <img src="./assets/prev_2.png" alt="Image 2" width="500"/>
+</p>
     
-
+---
 
 ### Evidence / Alerts
 
 <p align="center">
   <img src="./assets/user_telegram.png" alt="Image 1" width="500"/>
-  <img src="./assets/priv_telegram.png" alt="Image 1" width="500"/>
 </p>
 
 
