@@ -106,7 +106,7 @@ Add the following configuration within the <ossec_config> block to the Wazuh age
 
 ---
 
-## 4. Log Collection Verification
+## 4. 📄 Log Collection Verification
 
 - Checked Wazuh dashboard for incoming logs
 - Verified Sysmon logs for process creation, network events, and login attempts
@@ -114,6 +114,24 @@ Add the following configuration within the <ossec_config> block to the Wazuh age
 <p align="center">
 <img src="./assets/log_1.png" alt="Image 2" width="400"/>
 </p>
+
+---
+
+### 5. 📬 Telegram Integration
+
+For real-time alerting, I integrated Wazuh with **Telegram** using a custom bot. This allowed security alerts to be delivered instantly to a designated chat, enhancing incident visibility and response.
+
+#### 🔗 References Used
+- 📹 [YouTube Guide: Telegram Integration with Wazuh](https://youtu.be/2X1wVizsvjw?si=ypG1BjKkgcg2pzrD)
+- 📁 [GitHub Repository: OpenSecureCo - Telegram Integration Scripts](https://github.com/OpenSecureCo/Demos/blob/main/Telegram%20Integration)
+
+#### 🔧 Customization
+Made several modifications to the original scripts to tailor the integration for my specific lab setup and alerting requirements, including:
+- Adjusting API keys and bot token configurations
+- Customizing message formats for better readability
+- Filtering specific alert levels and event types before sending
+
+This integration significantly improved the responsiveness and usability of the monitoring setup.
 
 ---
 
@@ -126,16 +144,30 @@ Add the following configuration within the <ossec_config> block to the Wazuh age
 4.  [New User account Creation and Privilege Escalation](./new_user_privilege_escalation.md)
 5.  [Log tampering Simulation](./log_tampering_simulation_detection.md)
 
-
-
-## 4️⃣ Summary
-
-Successfully completed foundational setup of a SOC-style lab environment. Logs are flowing from the Windows victim VM to the Wazuh SIEM.
-
-Next up: Detect and alert on brute-force attempts and login anomalies.
-
 ---
 
-## 🔗 References & Downloads
+## Phase 1 Summary
 
-See [references.md](./references.md) for all download links and documentation references.
+During the first phase of my internship, I focused on establishing a comprehensive home lab environment and simulating various cybersecurity attack scenarios to enhance threat detection and response skills. Key activities completed include:
+
+### 🖥️ Home Lab Setup
+- Deployed and configured **Kali Linux** and **Windows 11** in an on-premise environment.
+- Installed and configured key **Wazuh components** for log collection and security monitoring.
+- Integrated **Sysmon** for enhanced endpoint visibility.
+- Enabled alerting through **Telegram integration** for real-time incident notifications.
+
+### ⚔️ Attack Scenarios Executed
+- **Brute Force followed by Privileged Login**
+- **After-Hours Login Detection**
+- **Lateral Movement via RDP**
+- **New User Account Creation with Privilege Escalation**
+- **Log Tampering Simulation**
+
+### 🛡️ Detection Engineering
+- Developed **custom Wazuh rules** to generate accurate alerts for simulated threats.
+- Aligned detection logic with **MITRE ATT&CK** techniques where applicable.
+
+This phase provided hands-on experience with endpoint security monitoring, attack detection, and the creation of tailored alerts for real-world attack patterns.
+
+
+---
