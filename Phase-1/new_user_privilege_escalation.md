@@ -89,7 +89,7 @@ To detect potentially malicious user creation and privilege escalation, particul
 
 <p align="center">
   <img src="./assets/acc_creation_1.png" alt="Image 1" width="500"/>
-  <img src="./assets/acc_creation_2.png" alt="Image 2" width="500"/>
+  <img src="./assets/acc_creation_2.png" alt="Image 2" width="800"/>
 </p>
 
    
@@ -99,7 +99,7 @@ To detect potentially malicious user creation and privilege escalation, particul
 
 <p align="center">
   <img src="./assets/priv_1.png" alt="Image 1" width="500"/>
-  <img src="./assets/priv_2.png" alt="Image 2" width="500"/>
+  <img src="./assets/priv_2.png" alt="Image 2" width="800"/>
 </p>
     
 ---
