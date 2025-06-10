@@ -4,7 +4,7 @@
 
 This simulation involves detecting potential log tampering activities in a Windows environment. The attacker attempts to clear logs using tools like `wevtutil`, `auditpol`, and PowerShell cmdlets such as `Clear-EventLog`.
 
-
+---
 ## Tools Used
 - **SIEM**: Wazuh  
 - **Log Source**: Windows Security Logs , Sysmon logs
@@ -12,7 +12,7 @@ This simulation involves detecting potential log tampering activities in a Windo
   - Windows 11 with Wazuh agent and Sysmon installed.
   - Centralized Wazuh Manager for alert correlation and forwarding.
   - Tools - wevtutil, Clear-EventLog, auditpol
-
+---
 
 ## Event ID / Rule ID / Data Source Mapping
 
@@ -23,11 +23,11 @@ This simulation involves detecting potential log tampering activities in a Windo
 | Custom Rule 1 | 100025                        | Log cleared using wevtutil         |
 | Custom Rule 2 | 100026                        | Any possible usage of command auditpol|
 
-
+---
 ## Detection Rules
----
+
 ### 1. Base Rule - Security Event Log (1102)
----
+
 **_win.logFileCleared.subjectUserName_ added to the original rule to extract User.**
 ```xml
 <rule id="63103" level="10">
@@ -85,11 +85,12 @@ This simulation involves detecting potential log tampering activities in a Windo
 </group>
 ```
 ---
+
 ## Trigger Scenarios
----
+
 These commands are run
 
-### `wevtutil cl <command>`
+### 1. `wevtutil cl <command>`
   - Triggers Base Rule 1 (Event ID 1102)
   - Triggers Sysmon Rule 61603 leading to detection via rule `100025`
   - Works even if executed via PowerShell
@@ -107,7 +108,7 @@ These commands are run
 ![](./assets/wevtutil.png)
 
 
-### `Clear-EventLog -Logname <command>`
+### 2. `Clear-EventLog -Logname <command>`
 
   - Triggers Base Rule 1 - 
   - Used in powershell only
@@ -120,8 +121,9 @@ These commands are run
 **Log**
 
 ![](./assets/Clean.png)    
+
     
-### `auditpol <command>'
+### 3. `auditpol <command>'
   - Triggers Sysmon Rule 61603 leading to detection via rule `100026`
   - Works even if executed via PowerShell
   - As the condition is .originalFileName, It can identify all possible commands of auditpol
@@ -141,8 +143,9 @@ These commands are run
 </p>
 
 ---
+
 ## 🔍 Analytical Notes & ✅ Recommendations
----
+
 - Suspicious use of log-clearing commands may indicate attacker log tampering.
 - Event ID 1102 (log cleared) is a key indicator of suspicious behavior.
 - Sysmon Event ID 1 can reveal process creation related to tampering.
@@ -155,6 +158,8 @@ These commands are run
 - Include such scenarios in regular blue team exercises.
 
 ---
+
 ## Detection status
 ✅ Sucessfully Triggered and received the proper alerts.
+
 ---
