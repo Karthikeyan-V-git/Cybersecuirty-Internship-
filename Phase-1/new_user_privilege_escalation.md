@@ -81,7 +81,7 @@ To detect potentially malicious user creation and privilege escalation, particul
 
 ## Attack Triggered using below commands
 
-### `net user <username> <password> /add` – Create a new user.
+### 1. `net user <username> <password> /add` – Create a new user.
 
 **Log - Alert** 
 
@@ -91,13 +91,13 @@ To detect potentially malicious user creation and privilege escalation, particul
 </p>
 
    
-### `net localgroup administrators <username> /add` – Add user to Administrators groups.
+### 2. `net localgroup administrators <username> /add` – Add user to Administrators groups.
 
 **Log - Alert**
 
 <p align="center">
-  <img src="./assets/prev_1.png" alt="Image 1" width="500"/>
-  <img src="./assets/prev_2.png" alt="Image 2" width="500"/>
+  <img src="./assets/priv_1.png" alt="Image 1" width="500"/>
+  <img src="./assets/priv_2.png" alt="Image 2" width="500"/>
 </p>
     
 ---
