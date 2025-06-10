@@ -13,7 +13,7 @@ To detect potential brute force attacks that result in a successful login, which
   - One Windows 11 desktop VM with Wazuh agent, Sysmon installed.
   - Default secuirty measures are turned of for testing.
   - Wazuh server running on Kali Linux for centralized log collection and alerting.
-  - Alerts configured via email and Telegram.
+  - Alerts configured via Telegram.
   
 
 ## Event ID / Rule ID /Data Source Mapping
@@ -77,8 +77,8 @@ This behavior is indicative of a credential stuffing or brute-force attack, foll
 ---
 
 
-### Log - Single Failed Login Attempt (Sample version)
-```json
+### 1. Log - Single Failed Login Attempt (Sample version)
+```xml
 {
   "eventID": "4625",
   "description": "Logon Failure - Unknown user or bad password",
@@ -94,8 +94,8 @@ This behavior is indicative of a credential stuffing or brute-force attack, foll
 }
 ```
 
-### Log - Multiple Windows Logon Failures
-```json
+### 2. Log - Multiple Windows Logon Failures
+```xml
 {
   "eventID": "4624",
   "description": "Multiple Windows Logon Failures",
@@ -115,8 +115,11 @@ This behavior is indicative of a credential stuffing or brute-force attack, foll
 
 ### Log - (Original) Sucessfull Login Which leads to the trigger of Next rule
 ![Final Log](./assets/brute_final_log.png)
+
 ![Final Log](./assets/brute_final_log1.png)
+
 ---
+
 ### Evidence / Alerts
 ![Wazuh](./assets/brute_final_TH.png)
 ![Telegram](./assets/brute_final_telegram.png)
@@ -140,6 +143,6 @@ This behavior is indicative of a credential stuffing or brute-force attack, foll
 ✅ Alerts successfully tested and received via Telegram.
 
 
-
+---
 
 
